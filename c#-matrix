@@ -13,12 +13,14 @@ public class MyClass
 	public static int input()
 	{
 		Console.WriteLine("*****************\nEnter \n2 for DOWN \n8 for UP \n4 for LEFT \n6 for RIGHT\n0 for EXIT\n*********************");
-		int k = Console.Read();
+		int k = Convert.ToInt32(Console.ReadLine());
 		return k;
 	}
+	
+	
 	public static void route(int k, int[, ] a, int i, int j)
 	{
-		switch (k)
+		switch(k)
 		{
 			case 2:
 				a[i, j] = 0;
@@ -38,6 +40,8 @@ public class MyClass
 					MyClass.route(p, a, i, j);
 				}
 				break;
+			
+			
 			case 4:
 				a[i, j] = 0;
 				j--;
@@ -56,6 +60,9 @@ public class MyClass
 					MyClass.route(p, a, i, j);
 				}
 				break;
+			
+			
+			
 			case 6:
 				a[i, j] = 0;
 				j++;
@@ -74,6 +81,9 @@ public class MyClass
 					MyClass.route(p, a, i, j);
 				}
 				break;
+			
+			
+			
 			case 8:
 				a[i, j] = 0;
 				i--;
@@ -92,23 +102,32 @@ public class MyClass
 					MyClass.route(p, a, i, j);
 				}
 				break;
+			
+			
+			
 			default:
 				Console.WriteLine("WRONG INPUT");
 				break;
 				//Environment.Exit(0);
 		}
 	}
+	
+	
+	
 	public static void display(int[, ] a)
 	{
-		for (var i = 0; i < 5; i++)
+		for (int i = 0; i < 5; i++)
 		{
-			for (var j = 0; j < 5; j++)
+			for (int j = 0; j < 5; j++)
 			{
 				Console.Write(a[i, j]);
 			}
 			Console.WriteLine();
 		}
 	}
+	
+	
+	
 	public static void Main(String[] args)
 	{
 		int[, ] a = {
