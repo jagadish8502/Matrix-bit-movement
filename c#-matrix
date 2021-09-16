@@ -1,0 +1,137 @@
+/******************************************************************************
+
+                            Online C# Compiler.
+                Code, Compile, Run and Debug C# program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+
+// Include namespace system
+using System;
+public class MyClass
+{
+	public static int input()
+	{
+		Console.WriteLine("*****************\nEnter \n2 for DOWN \n8 for UP \n4 for LEFT \n6 for RIGHT\n0 for EXIT\n*********************");
+		int k = Console.Read();
+		return k;
+	}
+	public static void route(int k, int[, ] a, int i, int j)
+	{
+		switch (k)
+		{
+			case 2:
+				a[i, j] = 0;
+				i++;
+				if (i < 5)
+				{
+					a[i, j] = 1;
+					MyClass.display(a);
+					int p = MyClass.input();
+					MyClass.route(p, a, i, j);
+				}
+				else
+				{
+					Console.WriteLine("Can\'t move ");
+					i--;
+					int p = MyClass.input();
+					MyClass.route(p, a, i, j);
+				}
+				break;
+			case 4:
+				a[i, j] = 0;
+				j--;
+				if (j >= 0)
+				{
+					a[i, j] = 1;
+					MyClass.display(a);
+					int p = MyClass.input();
+					MyClass.route(p, a, i, j);
+				}
+				else
+				{
+					Console.WriteLine("Can\'t move ");
+					j++;
+					int p = MyClass.input();
+					MyClass.route(p, a, i, j);
+				}
+				break;
+			case 6:
+				a[i, j] = 0;
+				j++;
+				if (j < 5)
+				{
+					a[i, j] = 1;
+					MyClass.display(a);
+					int p = MyClass.input();
+					MyClass.route(p, a, i, j);
+				}
+				else
+				{
+					Console.WriteLine("Can\'t move ");
+					j--;
+					int p = MyClass.input();
+					MyClass.route(p, a, i, j);
+				}
+				break;
+			case 8:
+				a[i, j] = 0;
+				i--;
+				if (i >= 0)
+				{
+					a[i, j] = 1;
+					MyClass.display(a);
+					int p = MyClass.input();
+					MyClass.route(p, a, i, j);
+				}
+				else
+				{
+					Console.WriteLine("Can\'t move ");
+					i++;
+					int p = MyClass.input();
+					MyClass.route(p, a, i, j);
+				}
+				break;
+			default:
+				Console.WriteLine("WRONG INPUT");
+				break;
+				//Environment.Exit(0);
+		}
+	}
+	public static void display(int[, ] a)
+	{
+		for (var i = 0; i < 5; i++)
+		{
+			for (var j = 0; j < 5; j++)
+			{
+				Console.Write(a[i, j]);
+			}
+			Console.WriteLine();
+		}
+	}
+	public static void Main(String[] args)
+	{
+		int[, ] a = {
+			{
+				0 , 0 , 0 , 0 , 0
+			},
+{
+				0 , 0 , 0 , 0 , 0
+			},
+{
+				0 , 0 , 1 , 0 , 0
+			},
+{
+				0 , 0 , 0 , 0 , 0
+			},
+{
+				0 , 0 , 0 , 0 , 0
+			}
+		};
+		MyClass.display(a);
+		int i = 2;
+		int j = 2;
+		int k = MyClass.input();
+		MyClass.route(k, a, i, j);
+	}
+}
