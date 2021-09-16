@@ -15,10 +15,16 @@ public class MyClass {
             case 2: a[i][j]=0;  i++;  
                     
                     if(i<5)
-                        a[i][j]=1; 
+                    {    a[i][j]=1; 
+                        display(a);
+                        int p=input();
+                        route(p,a,i,j);
+                    }
+                        
                     else
                     { 
                         System.out.println("Can't move ");
+                        i--;
                         int p= input();
                         route(p,a,i,j);
                     }
@@ -29,10 +35,15 @@ public class MyClass {
             case 4: a[i][j]=0;  j--;  
                     
                     if(j>=0)
-                        a[i][j]=1; 
+                     {    a[i][j]=1; 
+                        display(a);
+                       int p=input();
+                        route(p,a,i,j);
+                    }
                     else
                     { 
                         System.out.println("Can't move ");
+                        j++;
                         int p= input();
                         route(p,a,i,j);
                     } 
@@ -44,10 +55,15 @@ public class MyClass {
             case 6: a[i][j]=0;  j++;  
                     
                     if(j<5)
-                        a[i][j]=1; 
+                      {    a[i][j]=1; 
+                        display(a);
+                       int p=input();
+                        route(p,a,i,j);
+                    } 
                     else
                     { 
                         System.out.println("Can't move ");
+                        j--;
                         int p= input();
                         route(p,a,i,j);
                     } 
@@ -56,16 +72,22 @@ public class MyClass {
             case 8: a[i][j]=0;  i--;  
                     
                     if(i>=0)
-                        a[i][j]=1; 
+                     {    a[i][j]=1; 
+                        display(a);
+                        int p=input();
+                        route(p,a,i,j);
+                    }
                     else
                     { 
                         System.out.println("Can't move ");
+                        i++;
                         int p= input();
                         route(p,a,i,j);
                     } 
                     
                     break;
             default:
+                    System.out.println("WRONG INPUT");
                     System.exit(0);
                     
       }   
@@ -99,9 +121,6 @@ public class MyClass {
      
      
       route(k,a,i,j);
-      
-      
-       display(a);
       
       
      
