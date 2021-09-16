@@ -65,7 +65,7 @@ public class MyClass {
                     } 
                     
                     break;
-            case 0:
+            case default:
                     System.exit(0);
                     
       }   
