@@ -3,7 +3,7 @@ public class MyClass {
     
     public static int input()
     {
-         System.out.println("Enter \n2 for DOWN \n8 for UP \n4 for LEFT \n6 for RIGHT\n0 for EXIT");
+         System.out.println("*****************\nEnter \n2 for DOWN \n8 for UP \n4 for LEFT \n6 for RIGHT\n0 for EXIT\n*********************");
             int k=new java.util.Scanner(System.in).nextInt();
             return k;
     }
@@ -65,40 +65,46 @@ public class MyClass {
                     } 
                     
                     break;
-            case default:
+            default:
                     System.exit(0);
                     
       }   
     }
     
     
-    
-    public static void main(String args[]) {
-      int a[][]={{0,0,0,0,0},{0,0,0,0,0},{0,0,1,0,0},{0,0,0,0,0},{0,0,0,0,0}};
-      for(int i=0;i<5;i++){
-          for(int j=0;j<5;j++)
+    public static void display(int a[][])
+    {
+         for(int i=0;i<5;i++){
+          for(int  j=0;j<5;j++)
           {
                System.out.print(a[i][j]);
           }
           System.out.println();
       }
+    }
+    
+    
+    
+    public static void main(String args[]) {
+      
+      
+      int a[][]={{0,0,0,0,0},{0,0,0,0,0},{0,0,1,0,0},{0,0,0,0,0},{0,0,0,0,0}};
+      
+      
+      display(a);
      
-     int k=input();
      
      int i=2,j=2;
+     int k=input();
+     
+     
       route(k,a,i,j);
       
       
-      
+       display(a);
       
       
      
-      for(i=0;i<5;i++){
-          for( j=0;j<5;j++)
-          {
-               System.out.print(a[i][j]);
-          }
-          System.out.println();
-      }
+     
     }
 }
