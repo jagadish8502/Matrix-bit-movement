@@ -4,14 +4,12 @@ public class MyClass
 	public static int input()
 	{
 		Console.WriteLine("*****************\nEnter \n2 for DOWN \n8 for UP \n4 for LEFT \n6 for RIGHT\n0 for EXIT\n*********************");
-		int k = Convert.ToInt32(Console.ReadLine());
+		var k = Convert.ToInt32(Console.ReadLine());
 		return k;
 	}
-	
-	
 	public static void route(int k, int[, ] a, int i, int j)
 	{
-		switch(k)
+		switch (k)
 		{
 			case 2:
 				a[i, j] = 0;
@@ -20,19 +18,17 @@ public class MyClass
 				{
 					a[i, j] = 1;
 					MyClass.display(a);
-					int p = MyClass.input();
+					var p = MyClass.input();
 					MyClass.route(p, a, i, j);
 				}
 				else
 				{
 					Console.WriteLine("Can\'t move ");
 					i--;
-					int p = MyClass.input();
+					var p = MyClass.input();
 					MyClass.route(p, a, i, j);
 				}
 				break;
-			
-			
 			case 4:
 				a[i, j] = 0;
 				j--;
@@ -40,20 +36,17 @@ public class MyClass
 				{
 					a[i, j] = 1;
 					MyClass.display(a);
-					int p = MyClass.input();
+					var p = MyClass.input();
 					MyClass.route(p, a, i, j);
 				}
 				else
 				{
 					Console.WriteLine("Can\'t move ");
 					j++;
-					int p = MyClass.input();
+					var p = MyClass.input();
 					MyClass.route(p, a, i, j);
 				}
 				break;
-			
-			
-			
 			case 6:
 				a[i, j] = 0;
 				j++;
@@ -61,20 +54,17 @@ public class MyClass
 				{
 					a[i, j] = 1;
 					MyClass.display(a);
-					int p = MyClass.input();
+					var p = MyClass.input();
 					MyClass.route(p, a, i, j);
 				}
 				else
 				{
 					Console.WriteLine("Can\'t move ");
 					j--;
-					int p = MyClass.input();
+					var p = MyClass.input();
 					MyClass.route(p, a, i, j);
 				}
 				break;
-			
-			
-			
 			case 8:
 				a[i, j] = 0;
 				i--;
@@ -82,66 +72,53 @@ public class MyClass
 				{
 					a[i, j] = 1;
 					MyClass.display(a);
-					int p = MyClass.input();
+					var p = MyClass.input();
 					MyClass.route(p, a, i, j);
 				}
 				else
 				{
 					Console.WriteLine("Can\'t move ");
 					i++;
-					int p = MyClass.input();
+					var p = MyClass.input();
 					MyClass.route(p, a, i, j);
 				}
 				break;
-			
-			
-			
 			default:
 				Console.WriteLine("WRONG INPUT");
-				break;
-				//Environment.Exit(0);
+              break;
 		}
 	}
-	
-	
-	
 	public static void display(int[, ] a)
 	{
-		for (int i = 0; i < 5; i++)
+		for (var i = 0; i < 5; i++)
 		{
-			for (int j = 0; j < 5; j++)
+			for (var j = 0; j < 5; j++)
 			{
 				Console.Write(a[i, j]);
 			}
 			Console.WriteLine();
 		}
 	}
-	
-	
-	
 	public static void Main(String[] args)
 	{
-		int[, ] a = {
+		int[] sd = new int[25];
+		sd[12] = 1;
+		/*for(int i=0;i<25;i++)
+		        System.out.print(sd[i]+" ,");
+		    */
+		int[, ] a = new int[5, 5];
+		var x = 0;
+		for (var p = 0; p < 5; p++)
+		{
+			for (var q = 0; q < 5; q++)
 			{
-				0 , 0 , 0 , 0 , 0
-			},
-{
-				0 , 0 , 0 , 0 , 0
-			},
-{
-				0 , 0 , 1 , 0 , 0
-			},
-{
-				0 , 0 , 0 , 0 , 0
-			},
-{
-				0 , 0 , 0 , 0 , 0
+				a[p, q] = sd[x++];
 			}
-		};
+		}
 		MyClass.display(a);
-		int i = 2;
-		int j = 2;
-		int k = MyClass.input();
+		 var i = 2;
+		 var j = 2;
+		var k = MyClass.input();
 		MyClass.route(k, a, i, j);
 	}
 }
