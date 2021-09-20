@@ -1,3 +1,4 @@
+// Include namespace system
 using System;
 public class MyClass
 {
@@ -7,118 +8,115 @@ public class MyClass
 		var k = Convert.ToInt32(Console.ReadLine());
 		return k;
 	}
-	public static void route(int k, int[, ] a, int i, int j)
+	public static void route(int k, int[] a, int i, int n)
 	{
 		switch (k)
 		{
 			case 2:
-				a[i, j] = 0;
-				i++;
-				if (i < 5)
+				a[i] = 0;
+				i = i + n;
+				if (i < n * n)
 				{
-					a[i, j] = 1;
-					MyClass.display(a);
+					a[i] = 1;
+					MyClass.display(a, n);
 					var p = MyClass.input();
-					MyClass.route(p, a, i, j);
+					MyClass.route(p, a, i, n);
 				}
 				else
 				{
 					Console.WriteLine("Can\'t move ");
-					i--;
+					i = i - n;
 					var p = MyClass.input();
-					MyClass.route(p, a, i, j);
+					MyClass.route(p, a, i, n);
 				}
 				break;
 			case 4:
-				a[i, j] = 0;
-				j--;
-				if (j >= 0)
-				{
-					a[i, j] = 1;
-					MyClass.display(a);
-					var p = MyClass.input();
-					MyClass.route(p, a, i, j);
-				}
-				else
-				{
-					Console.WriteLine("Can\'t move ");
-					j++;
-					var p = MyClass.input();
-					MyClass.route(p, a, i, j);
-				}
-				break;
-			case 6:
-				a[i, j] = 0;
-				j++;
-				if (j < 5)
-				{
-					a[i, j] = 1;
-					MyClass.display(a);
-					var p = MyClass.input();
-					MyClass.route(p, a, i, j);
-				}
-				else
-				{
-					Console.WriteLine("Can\'t move ");
-					j--;
-					var p = MyClass.input();
-					MyClass.route(p, a, i, j);
-				}
-				break;
-			case 8:
-				a[i, j] = 0;
+				a[i] = 0;
 				i--;
-				if (i >= 0)
+				if (i < n * n)
 				{
-					a[i, j] = 1;
-					MyClass.display(a);
+					a[i] = 1;
+					MyClass.display(a, n);
 					var p = MyClass.input();
-					MyClass.route(p, a, i, j);
+					MyClass.route(p, a, i, n);
 				}
 				else
 				{
 					Console.WriteLine("Can\'t move ");
 					i++;
 					var p = MyClass.input();
-					MyClass.route(p, a, i, j);
+					MyClass.route(p, a, i, n);
+				}
+				break;
+			case 6:
+				a[i] = 0;
+				i++;
+				if (i < n * n)
+				{
+					a[i] = 1;
+					MyClass.display(a, n);
+					var p = MyClass.input();
+					MyClass.route(p, a, i, n);
+				}
+				else
+				{
+					Console.WriteLine("Can\'t move ");
+					i--;
+					var p = MyClass.input();
+					MyClass.route(p, a, i, n);
+				}
+				break;
+			case 8:
+				a[i] = 0;
+				i = i - n;
+				if (i >= 0)
+				{
+					a[i] = 1;
+					MyClass.display(a, n);
+					var p = MyClass.input();
+					MyClass.route(p, a, i, n);
+				}
+				else
+				{
+					Console.WriteLine("Can\'t move ");
+					i = i + n;
+					var p = MyClass.input();
+					MyClass.route(p, a, i, n);
 				}
 				break;
 			default:
 				Console.WriteLine("WRONG INPUT");
-              break;
+				break;
 		}
 	}
-	public static void display(int[, ] a)
+	public static void display(int[] a, int n)
 	{
-		for (var i = 0; i < 5; i++)
+		var t = 0;
+		for (var i = 0; i < n; i++)
 		{
-			for (var j = 0; j < 5; j++)
+			for (var j = 0; j < n; j++)
 			{
-				Console.Write(a[i, j]);
+				Console.Write(a[t++]);
 			}
 			Console.WriteLine();
 		}
 	}
 	public static void Main(String[] args)
 	{
-		int[] sd = new int[25];
-		sd[12] = 1;
-		/*for(int i=0;i<25;i++)
-		        System.out.print(sd[i]+" ,");
-		    */
-		int[, ] a = new int[5, 5];
-		var x = 0;
-		for (var p = 0; p < 5; p++)
-		{
-			for (var q = 0; q < 5; q++)
-			{
-				a[p, q] = sd[x++];
-			}
-		}
-		MyClass.display(a);
-		 var i = 2;
-		 var j = 2;
+		Console.WriteLine("Enter size");
+		var n = Convert.ToInt32(Console.ReadLine());
+		var l = n * n;
+		int[] a = new int[l];
+		var i = (int)(l / 2);
+		a[(int)(l / 2)] = 1;
+		/*if(l%2!=0)
+		    a[l/2]=1;
+		  else
+		    a[(l-1)/2]=1;
+		  */
+		MyClass.display(a, n);
+		//int i=12;
 		var k = MyClass.input();
-		MyClass.route(k, a, i, j);
+		MyClass.route(k, a, i, n);
 	}
 }
