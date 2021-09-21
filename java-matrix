@@ -32,9 +32,9 @@ public class MyClass {
                     break;
                     
                     
-           case 4: a[i]=0;  i--;  
+           case 4: a[i]=0; 
                     
-                    if(i<n*n)
+                    if(((i-1)<(i-(n+(i%n)))))
                      {    a[i]=1; 
                         display(a,n);
                        int p=input();
@@ -43,7 +43,6 @@ public class MyClass {
                     else
                     { 
                         System.out.println("Can't move ");
-                        i++;
                         int p= input();
                         route(p,a,i,n);
                     } 
@@ -52,10 +51,10 @@ public class MyClass {
                     
                     
                     
-            case 6: a[i]=0;  i++;  
+            case 6: a[i]=0; 
                     
-                    if(i<n*n)
-                      {    a[i]=1; 
+                    if((i+1)<((i+(n-(i%n)))))
+                      {    a[++i]=1; 
                         display(a,n);
                        int p=input();
                         route(p,a,i,n);
@@ -63,7 +62,7 @@ public class MyClass {
                     else
                     { 
                         System.out.println("Can't move ");
-                        i--;
+                        
                         int p= input();
                         route(p,a,i,n);
                     } 
@@ -120,21 +119,12 @@ public class MyClass {
   
   
   
-  int i=l/2;
-  a[l/2]=1;
-  
-  /*if(l%2!=0)
-    a[l/2]=1;
-  else
-    a[(l-1)/2]=1;
-  */
+  int i=l-n;
+  a[i]=1;
   
      
-      
-      display(a,n);
-     
-     
-     //int i=12;
+     display(a,n);
+
      int k=input();
      
      
