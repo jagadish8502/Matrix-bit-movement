@@ -32,8 +32,7 @@ public class MyClass
 				break;
 			case 4:
 				a[i] = 0;
-				i--;
-				if (i < n * n)
+				if (((i - 1) < (i - (n + (i % n)))))
 				{
 					a[i] = 1;
 					MyClass.display(a, n);
@@ -43,17 +42,15 @@ public class MyClass
 				else
 				{
 					Console.WriteLine("Can\'t move ");
-					i++;
 					var p = MyClass.input();
 					MyClass.route(p, a, i, n);
 				}
 				break;
 			case 6:
 				a[i] = 0;
-				i++;
-				if (i < n * n)
+				if ((i + 1) < ((i + (n - (i % n)))))
 				{
-					a[i] = 1;
+					a[++i] = 1;
 					MyClass.display(a, n);
 					var p = MyClass.input();
 					MyClass.route(p, a, i, n);
@@ -61,7 +58,6 @@ public class MyClass
 				else
 				{
 					Console.WriteLine("Can\'t move ");
-					i--;
 					var p = MyClass.input();
 					MyClass.route(p, a, i, n);
 				}
@@ -107,15 +103,9 @@ public class MyClass
 		var n = Convert.ToInt32(Console.ReadLine());
 		var l = n * n;
 		int[] a = new int[l];
-		var i = (int)(l / 2);
-		a[(int)(l / 2)] = 1;
-		/*if(l%2!=0)
-		    a[l/2]=1;
-		  else
-		    a[(l-1)/2]=1;
-		  */
+		var i = l - n;
+		a[i] = 1;
 		MyClass.display(a, n);
-		//int i=12;
 		var k = MyClass.input();
 		MyClass.route(k, a, i, n);
 	}
